@@ -16,7 +16,7 @@ var tasks = []task{
 	{ID:10,Title: "Wlaking",Completed: false},
 	{ID:20,Title: "Cooking",Completed: false},
 }
-var index = `hello`
+var index = `Welcome to-to-do list app`
 // --------------------------------------------------------------------
 // ⭐ Write a handler to return all tasks:
 // getTasks responds with the list of all tasks as JSON.
