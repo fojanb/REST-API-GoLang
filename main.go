@@ -16,7 +16,7 @@ var tasks = []task{
 	{ID:10,Title: "Wlaking",Completed: false},
 	{ID:20,Title: "Cooking",Completed: false},
 }
-var index = `Welcome to-to-do list app`
+// var index = `Welcome to-to-do list app`
 // --------------------------------------------------------------------
 // ⭐ Write a handler to return all tasks:
 // getTasks responds with the list of all tasks as JSON.
@@ -44,7 +44,6 @@ func addTask(c *gin.Context){
 // ⭐ Write a handler to get a specific task:
 func getTaskByID(c *gin.Context) {
     id := c.Param("id")
-
     // Loop over the list of tasks, looking for
     // an task whose ID value matches the parameter.
     for _, a := range tasks {
@@ -76,10 +75,9 @@ func main(){
 	//Initialize a Gin router using Default.
 	router := gin.Default()
 	router.LoadHTMLGlob("templates/*")
-
 	router.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "index.tmpl", gin.H{
-			"title": index,
+		c.HTML(http.StatusOK, "index.html", gin.H{
+			
 		})
 	})
 	// Use the GET function to associate the GET HTTP method and /tasks path with a handler function.

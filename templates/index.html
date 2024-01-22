@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Task Manager App - GoLang and JavaScript</title>
     <style>
-      *{
-          box-sizing:border-box;
-          margin: 50px auto;
-          text-align:center;
+      * {
+        box-sizing: border-box;
+        margin: 50px auto;
+        text-align: center;
       }
       #root {
-          color: red;
+        color: red;
       }
     </style>
   </head>
   <body>
-    <div id="root">{{ .title }}</div>
+    <div id="root">Welcome to fullstack dev world</div>
     <button id="getData">Show Tasks List</button>
     <script>
       const btn = document.getElementById("getData");
@@ -25,7 +25,7 @@
           let holder = document.createElement("div");
           holder.setAttribute("id", task.id);
           holder.innerText = task.title;
-          document.body.append(holder)
+          document.body.append(holder);
         });
       };
       const getData = async () => {
@@ -33,7 +33,7 @@
         const data = await res.json();
         renderData(data);
       };
-      btn.addEventListener("click",getData,{once:true});
+      btn.addEventListener("click", getData, { once: true });
     </script>
   </body>
 </html>
