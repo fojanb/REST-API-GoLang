@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager App - GoLang and JavaScript</title>
+    <style>
+      *{
+          box-sizing:border-box;
+          margin: 50px auto;
+          text-align:center;
+      }
+      #root {
+          color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">{{ .title }}</div>
+    <button id="getData">Show Tasks List</button>
+    <script>
+      const btn = document.getElementById("getData");
+      const renderData = (data) => {
+        data.forEach((task) => {
+          let holder = document.createElement("div");
+          holder.setAttribute("id", task.id);
+          holder.innerText = task.title;
+          document.body.append(holder)
+        });
+      };
+      const getData = async () => {
+        const res = await fetch("http://localhost:8080/tasks");
+        const data = await res.json();
+        renderData(data);
+      };
+      btn.addEventListener("click",getData,{once:true});
+    </script>
+  </body>
+</html>

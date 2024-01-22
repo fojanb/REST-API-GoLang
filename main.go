@@ -4,7 +4,6 @@ import (
 	"net/http"
 	"github.com/gin-gonic/gin"
 	"strconv"
-
 )
 type task struct {
 	ID 			int 		`json:"id"`
@@ -17,6 +16,7 @@ var tasks = []task{
 	{ID:10,Title: "Wlaking",Completed: false},
 	{ID:20,Title: "Cooking",Completed: false},
 }
+var index = `hello`
 // --------------------------------------------------------------------
 // ⭐ Write a handler to return all tasks:
 // getTasks responds with the list of all tasks as JSON.
@@ -75,6 +75,13 @@ func deleteTaskByID(c *gin.Context) {
 func main(){
 	//Initialize a Gin router using Default.
 	router := gin.Default()
+	router.LoadHTMLGlob("templates/*")
+
+	router.GET("/", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "index.tmpl", gin.H{
+			"title": index,
+		})
+	})
 	// Use the GET function to associate the GET HTTP method and /tasks path with a handler function.
 	router.GET("/tasks", getTasks)
 	// Use the POST function to associate the POST HTTP method and /tasks path with a handler function.
